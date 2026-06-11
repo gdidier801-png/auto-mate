@@ -63,20 +63,27 @@
         <g class="float-mid"><rect x="46" y="296" width="48" height="48" rx="12" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2"/><path d="M58 326 v-8 m12 8 v-14" stroke="#2563EB" stroke-width="3.5" stroke-linecap="round"/></g>
       </svg>
 
-      <div class="container hero__inner reveal">
-        <h1 class="hero__title">J'automatise les tâches répétitives des consultants et coachs indépendants — <span class="accent">avec n8n, sans code</span>, livré en quelques jours.</h1>
-        <p class="hero__subtitle">Relances de factures, confirmations de rendez-vous, onboarding client : votre activité tourne pendant que vous travaillez sur ce qui compte.</p>
-        <div class="hero__actions">
-          <a href="https://cal.com/gaspard-didier-aiuucr/appel-de-decouverte" class="btn btn--primary" target="_blank" rel="noopener">Réserver un appel découverte gratuit (20 min)</a>
+      <div class="container hero__inner">
+        <h1 class="hero__title reveal">J'automatise les tâches répétitives des consultants et petites entreprises <span class="accent">avec n8n, sans code</span> et livré en quelques jours.</h1>
+        <p class="hero__subtitle reveal delay-1">Relances de factures, confirmations de rendez-vous, onboarding client : votre activité tourne pendant que vous travaillez sur ce qui compte vraiment.</p>
+        <div class="hero__actions reveal delay-2">
+          <a href="https://cal.com/gaspard-didier-aiuucr/appel-de-decouverte" class="btn btn--primary btn--shine" target="_blank" rel="noopener">Réserver un appel découverte gratuit (20 min)</a>
           <a href="#automatisations" class="btn btn--outline">Voir mes automatisations</a>
         </div>
       </div>
+
+      <!-- Indicateur de scroll : invite à descendre -->
+      <a href="#probleme" class="scroll-hint reveal delay-3" aria-label="Descendre">
+        <span class="scroll-hint__text">Découvrir</span>
+        <span class="scroll-hint__mouse"><span class="scroll-hint__wheel"></span></span>
+      </a>
     </section>
 
     <!-- ===== SECTION 2 — LE PROBLÈME ===== -->
     <section class="problem" id="probleme">
       <div class="container">
         <p class="problem__text reveal">Vous envoyez une facture et le client ne répond plus — il faut relancer, encore et encore, sans avoir l'air désespéré. Vous confirmez vos rendez-vous à la main, vous onboardez chaque nouveau client en répétant les mêmes cinq étapes. <strong>Ce sont des heures perdues chaque semaine</strong> sur des tâches que votre activité pourrait faire toute seule.</p>
+        <p class="problem__punch reveal delay-1">J'ai construit des automatisations qui le font à votre place !</p>
       </div>
     </section>
 
@@ -115,6 +122,8 @@
               <div class="card__badges">
                 <span class="badge">Calendly</span>
                 <span class="badge">Gmail</span>
+                <span class="badge">Google Forms</span>
+                <span class="badge">Google Sheets</span>
                 <span class="badge">n8n</span>
               </div>
             </div>
@@ -222,6 +231,32 @@
 
     <!-- ===== SECTION 4 — COMMENT ÇA MARCHE ===== -->
     <section class="process" id="process">
+
+      <!-- Décor latéral : engrenages et éclair flottants -->
+      <svg class="side-decor side-decor--left" viewBox="0 0 160 360" fill="none" aria-hidden="true">
+        <g class="float-slow">
+          <circle cx="70" cy="70" r="34" stroke="#2563EB" stroke-opacity="0.22" stroke-width="2" stroke-dasharray="8 6"/>
+          <circle cx="70" cy="70" r="14" fill="#2563EB" fill-opacity="0.14"/>
+        </g>
+        <g class="float-mid">
+          <rect x="30" y="190" width="56" height="56" rx="14" fill="#DBEAFE"/>
+          <path d="M62 204 l-12 18 h10 l-4 16 14 -20 h-10 z" fill="#2563EB"/>
+        </g>
+        <circle cx="120" cy="320" r="6" fill="#93C5FD" class="float-slow"/>
+        <circle cx="40" cy="140" r="4" fill="#60A5FA" class="float-mid"/>
+      </svg>
+      <svg class="side-decor side-decor--right" viewBox="0 0 160 360" fill="none" aria-hidden="true">
+        <g class="float-mid">
+          <rect x="60" y="50" width="56" height="56" rx="28" fill="#DBEAFE"/>
+          <path d="M80 78 l6 6 l12 -14" stroke="#2563EB" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
+        <g class="float-slow">
+          <circle cx="80" cy="240" r="30" stroke="#2563EB" stroke-opacity="0.22" stroke-width="2" stroke-dasharray="4 8"/>
+          <circle cx="80" cy="240" r="10" fill="#60A5FA" fill-opacity="0.5"/>
+        </g>
+        <circle cx="40" cy="330" r="5" fill="#93C5FD" class="float-mid"/>
+      </svg>
+
       <div class="container">
         <h2 class="section-title reveal">Comment ça marche</h2>
         <div class="steps">
@@ -246,27 +281,54 @@
 
     <!-- ===== SECTION 5 — À PROPOS ===== -->
     <section class="about" id="a-propos">
+
+      <!-- Décor latéral : nœuds connectés -->
+      <svg class="side-decor side-decor--right" viewBox="0 0 160 360" fill="none" aria-hidden="true">
+        <path d="M80 60 C 30 110, 130 170, 70 230" stroke="#2563EB" stroke-opacity="0.18" stroke-width="2" stroke-dasharray="6 6" class="flow-line"/>
+        <g class="float-slow"><rect x="56" y="36" width="48" height="48" rx="12" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="2"/><circle cx="80" cy="60" r="9" fill="#2563EB" fill-opacity="0.8"/></g>
+        <g class="float-mid"><rect x="46" y="206" width="48" height="48" rx="24" fill="#DBEAFE"/><path d="M62 230 h36 m-18 -18 v36" stroke="#2563EB" stroke-width="0" /><path d="M64 230 l10 10 l18 -20" stroke="#2563EB" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+        <circle cx="40" cy="320" r="6" fill="#93C5FD" class="float-slow"/>
+      </svg>
+
       <div class="container about__inner">
         <!-- PLACEHOLDER PHOTO : remplacer photo.jpg par ta vraie photo (carrée de préférence) -->
         <img class="about__photo reveal" src="assets/images/photo.jpg" alt="Photo de Gaspard Didier" width="400" height="400">
         <div class="about__content reveal">
           <h2 class="section-title section-title--left">À propos de moi</h2>
-          <p class="about__text">Je m'appelle Gaspard, étudiant en 1ère année à l'ESSEC. Je me suis formé pendant plusieurs semaines à n8n — triggers, workflows, connexions API, débogage — pour aider les indépendants et les coachs à automatiser les tâches qui leur prennent le plus de temps. Pas de jargon technique, pas de promesses en l'air : je construis des systèmes simples qui tournent.</p>
+          <p class="about__text">Je m'appelle Gaspard, étudiant en 2ème année à l'ESSEC. Je me suis formé pendant plusieurs semaines à n8n, triggers, workflows, connexions API, débogage, dans l'objectif d'aider les indépendants et les petites entreprises à automatiser les tâches qui leur prennent le plus de temps. Pas de langage complexe, pas de promesses en l'air : je construis des systèmes simples qui fonctionnent.</p>
           <div class="about__principles">
             <span class="badge badge--principle">Réponse rapide</span>
             <span class="badge badge--principle">Pas de jargon</span>
             <span class="badge badge--principle">Systèmes simples qui durent</span>
           </div>
+          <!-- PLACEHOLDER LINKEDIN : remplace # par l'URL de ton profil LinkedIn -->
+          <a href="#" class="about__linkedin" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45z"/></svg>
+            Me retrouver sur LinkedIn
+          </a>
         </div>
       </div>
     </section>
 
     <!-- ===== SECTION 6 — CTA FINAL ===== -->
     <section class="cta" id="contact">
+
+      <!-- Robot mascotte flottant au-dessus du titre -->
+      <svg class="cta__robot float-mid" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+        <line x1="32" y1="10" x2="32" y2="16" stroke="#60A5FA" stroke-width="3" stroke-linecap="round"/>
+        <circle cx="32" cy="7" r="3.5" fill="#60A5FA"/>
+        <rect x="12" y="16" width="40" height="34" rx="11" fill="#2563EB"/>
+        <rect x="6" y="27" width="5" height="12" rx="2.5" fill="#2563EB"/>
+        <rect x="53" y="27" width="5" height="12" rx="2.5" fill="#2563EB"/>
+        <circle cx="24" cy="31" r="4.5" fill="#FFFFFF"/>
+        <circle cx="40" cy="31" r="4.5" fill="#FFFFFF"/>
+        <path d="M24 41 Q32 47 40 41" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" fill="none"/>
+      </svg>
+
       <div class="container cta__inner reveal">
         <h2 class="cta__title">Prêt à automatiser ?</h2>
         <p class="cta__text">Réservez un appel découverte gratuit de 20 minutes — sans engagement.</p>
-        <a href="https://cal.com/gaspard-didier-aiuucr/appel-de-decouverte" class="btn btn--primary btn--large" target="_blank" rel="noopener">Réserver un appel</a>
+        <a href="https://cal.com/gaspard-didier-aiuucr/appel-de-decouverte" class="btn btn--primary btn--large btn--shine" target="_blank" rel="noopener">Réserver un appel</a>
       </div>
     </section>
   </main>
