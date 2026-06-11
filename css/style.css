@@ -770,65 +770,12 @@ img, video { max-width: 100%; display: block; }
   transform: translateY(0);
 }
 
-/* ===== Curseur personnalisé (desktop, souris uniquement) =====
-   Point bleu + anneau qui suit en douceur + traînée qui s'efface.
-   Activé en JS uniquement si pointeur fin et pas de reduced-motion. */
-body.custom-cursor,
-body.custom-cursor a,
-body.custom-cursor button,
-body.custom-cursor .btn {
-  cursor: none;
-}
-/* Sur les vidéos on garde le curseur natif (contrôles de lecture) */
-body.custom-cursor video { cursor: auto; }
-
-.cursor-dot,
-.cursor-ring,
-.cursor-trail {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  border-radius: 50%;
-  z-index: 9999;
-}
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  transform: translate(-50%, -50%);
-  transition: opacity 0.2s ease;
-}
-.cursor-ring {
-  width: 36px;
-  height: 36px;
-  border: 2px solid rgba(37, 99, 235, 0.45);
-  transform: translate(-50%, -50%);
-  transition: width 0.25s ease, height 0.25s ease, border-color 0.25s ease, opacity 0.2s ease;
-}
-/* L'anneau grossit sur les éléments cliquables */
-.cursor-ring.is-hovering {
-  width: 56px;
-  height: 56px;
-  border-color: rgba(37, 99, 235, 0.8);
-  background: rgba(37, 99, 235, 0.06);
-}
-.cursor-hidden .cursor-dot,
-.cursor-hidden .cursor-ring { opacity: 0; }
-
-/* Traînée : petits points qui rétrécissent et disparaissent */
-.cursor-trail {
-  width: 7px;
-  height: 7px;
-  background: var(--blue-300);
-  transform: translate(-50%, -50%);
-  animation: trail-fade 0.55s ease-out forwards;
-}
-@keyframes trail-fade {
-  to {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.1);
-  }
+/* ===== Curseur personnalisé : flèche bleue (forme normale) =====
+   Bleu ciel #0EA5E9 (distinct du bleu du site) + ombre bleu foncé.
+   Curseur natif SVG : pas de JS, pas de latence, pas de traînée.
+   Hotspot (4,3) = pointe de la flèche. */
+body {
+  cursor: url("../assets/images/cursor.svg") 4 3, auto;
 }
 
 /* Respecter la préférence "réduire les animations" */
