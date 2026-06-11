@@ -80,6 +80,18 @@ img, video { max-width: 100%; display: block; }
 .btn--small { padding: 10px 20px; font-size: 14px; }
 .btn--large { padding: 16px 36px; font-size: 18px; }
 
+/* ===== Barre de progression du scroll ===== */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 0;
+  background: linear-gradient(90deg, var(--accent), #60A5FA);
+  z-index: 200;
+  transition: width 0.1s linear;
+}
+
 /* ===== Nav ===== */
 .nav {
   position: sticky;
@@ -96,16 +108,60 @@ img, video { max-width: 100%; display: block; }
   height: 68px;
 }
 .nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 20px;
   color: var(--text);
   text-decoration: none;
 }
+.nav__logo {
+  width: 34px;
+  height: 34px;
+  transition: transform 0.3s ease;
+}
+.nav__brand:hover .nav__logo { transform: rotate(-8deg) scale(1.08); }
 
 /* ===== Hero ===== */
-.hero { padding: 96px 0 110px; }
-.hero__inner { max-width: 820px; }
+.hero {
+  position: relative;
+  padding: 96px 0 110px;
+  overflow: hidden;
+  /* Halo bleu très léger derrière le titre + grille pointillée discrète */
+  background:
+    radial-gradient(ellipse 60% 50% at 50% 0%, rgba(37, 99, 235, 0.06), transparent 70%),
+    radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: auto, 28px 28px;
+}
+.hero__inner { position: relative; max-width: 820px; }
+
+/* Décors latéraux : nœuds de workflow flottants (masqués en mobile) */
+.hero__decor {
+  display: none;
+  position: absolute;
+  top: 50%;
+  width: 220px;
+  height: 420px;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.hero__decor--left { left: -20px; }
+.hero__decor--right { right: -20px; }
+
+.float-slow { animation: float 6s ease-in-out infinite; }
+.float-mid { animation: float 4.5s ease-in-out 0.8s infinite; }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Lignes de connexion animées (pointillés qui défilent) */
+.flow-line { animation: flow-dash 1.6s linear infinite; }
+@keyframes flow-dash {
+  to { stroke-dashoffset: -24; }
+}
 .hero__title {
   font-family: var(--font-display);
   font-weight: 700;
@@ -128,9 +184,23 @@ img, video { max-width: 100%; display: block; }
 
 /* ===== Section 2 — Problème ===== */
 .problem {
+  position: relative;
   background: var(--bg-alt);
   padding: 90px 0;
+  overflow: hidden;
 }
+/* Grands guillemets décoratifs sur les côtés */
+.problem::before,
+.problem::after {
+  font-family: var(--font-display);
+  font-size: 220px;
+  line-height: 1;
+  color: rgba(37, 99, 235, 0.07);
+  position: absolute;
+  pointer-events: none;
+}
+.problem::before { content: "“"; top: 10px; left: 4vw; }
+.problem::after { content: "”"; bottom: -60px; right: 4vw; }
 .problem__text {
   max-width: 700px;
   margin: 0 auto;
@@ -153,7 +223,24 @@ img, video { max-width: 100%; display: block; }
 .section-title--left { text-align: left; }
 
 /* ===== Section 3 — Automatisations ===== */
-.automations { padding: 100px 0; }
+.automations {
+  position: relative;
+  padding: 100px 0;
+}
+/* Décor latéral : halos bleus très doux sur les côtés */
+.automations::before,
+.automations::after {
+  content: "";
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.07), transparent 70%);
+  pointer-events: none;
+}
+.automations::before { top: 40px; left: -180px; }
+.automations::after { bottom: 40px; right: -180px; }
+
 .cards {
   display: grid;
   grid-template-columns: 1fr;
@@ -164,10 +251,10 @@ img, video { max-width: 100%; display: block; }
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--bg);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
 }
 .card:hover {
-  transform: scale(1.02) translateY(-2px);
   box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
 }
 .card__video {
@@ -204,6 +291,59 @@ img, video { max-width: 100%; display: block; }
   border-radius: 999px;
   padding: 5px 12px;
 }
+
+/* ===== Intégrations — marquee défilant ===== */
+.integrations {
+  padding: 90px 0;
+  background: var(--bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  overflow: hidden;
+}
+.integrations__sub {
+  text-align: center;
+  color: var(--text-muted);
+  margin: -32px 0 48px;
+  font-size: 16px;
+}
+.marquee {
+  overflow: hidden;
+  padding: 10px 0;
+  /* Fondu sur les bords gauche/droit */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+.marquee__track {
+  display: flex;
+  gap: 14px;
+  width: max-content;
+  animation: marquee-scroll 38s linear infinite;
+}
+.marquee--reverse .marquee__track { animation-direction: reverse; }
+.marquee:hover .marquee__track { animation-play-state: paused; }
+@keyframes marquee-scroll {
+  to { transform: translateX(-50%); }
+}
+.badge--app {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--bg);
+  font-size: 14px;
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 500;
+  padding: 10px 18px;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.badge--app:hover {
+  transform: translateY(-2px);
+  border-color: var(--accent);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
+}
+.badge--app img { width: 18px; height: 18px; }
 
 /* ===== Section 4 — Process ===== */
 .process {
@@ -263,10 +403,24 @@ img, video { max-width: 100%; display: block; }
 
 /* ===== Section 6 — CTA final ===== */
 .cta {
+  position: relative;
   background: var(--dark);
   padding: 100px 0;
   text-align: center;
+  overflow: hidden;
 }
+/* Grille pointillée + halo bleu sur la bande sombre */
+.cta::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 50% 60% at 50% 100%, rgba(37, 99, 235, 0.22), transparent 70%),
+    radial-gradient(circle, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+  background-size: auto, 26px 26px;
+  pointer-events: none;
+}
+.cta__inner { position: relative; }
 .cta__title {
   font-family: var(--font-display);
   font-weight: 700;
@@ -293,9 +447,17 @@ img, video { max-width: 100%; display: block; }
   align-items: center;
 }
 .footer__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
   font-family: var(--font-display);
   font-weight: 600;
   color: #fff;
+}
+.footer__logo {
+  width: 26px;
+  height: 26px;
+  filter: brightness(0) invert(1); /* logo en blanc sur fond sombre */
 }
 .footer__links {
   display: flex;
@@ -328,6 +490,8 @@ img, video { max-width: 100%; display: block; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
   html { scroll-behavior: auto; }
+  .float-slow, .float-mid, .flow-line, .marquee__track { animation: none; }
+  .marquee__track { flex-wrap: wrap; justify-content: center; }
 }
 
 /* ===== Desktop ≥ 768px ===== */
@@ -351,4 +515,11 @@ img, video { max-width: 100%; display: block; }
   .cta__title { font-size: 44px; }
 
   .footer__inner { flex-direction: row; justify-content: space-between; }
+}
+
+/* ===== Très grand écran ≥ 1240px : décors latéraux du hero visibles ===== */
+@media (min-width: 1240px) {
+  .hero__decor { display: block; }
+  .hero__decor--left { left: calc(50% - 760px); }
+  .hero__decor--right { right: calc(50% - 760px); }
 }
