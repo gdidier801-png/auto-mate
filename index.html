@@ -87,8 +87,41 @@
       </div>
     </section>
 
+    <!-- Connecteur de parcours : fil animé entre les sections -->
+    <div class="connector" aria-hidden="true">
+      <span class="connector__line"></span>
+      <span class="connector__node"></span>
+    </div>
+
     <!-- ===== SECTION 3 — MES AUTOMATISATIONS ===== -->
     <section class="automations" id="automatisations">
+
+      <!-- Décor latéral : enveloppe et horloge flottantes -->
+      <svg class="side-decor side-decor--left" viewBox="0 0 160 360" fill="none" aria-hidden="true">
+        <g class="float-slow">
+          <rect x="36" y="50" width="64" height="48" rx="12" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="2"/>
+          <path d="M42 60 l26 18 26 -18" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
+        <g class="float-mid">
+          <circle cx="70" cy="220" r="28" fill="#DBEAFE"/>
+          <path d="M70 206 v14 l10 8" stroke="#2563EB" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </g>
+        <circle cx="120" cy="140" r="5" fill="#93C5FD" class="float-mid"/>
+        <circle cx="40" cy="310" r="6" fill="#60A5FA" fill-opacity="0.6" class="float-slow"/>
+      </svg>
+      <svg class="side-decor side-decor--right" viewBox="0 0 160 360" fill="none" aria-hidden="true">
+        <g class="float-mid">
+          <rect x="50" y="60" width="56" height="56" rx="14" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="2"/>
+          <rect x="62" y="78" width="32" height="4" rx="2" fill="#2563EB"/>
+          <rect x="62" y="88" width="22" height="4" rx="2" fill="#93C5FD"/>
+        </g>
+        <g class="float-slow">
+          <circle cx="78" cy="250" r="30" stroke="#2563EB" stroke-opacity="0.2" stroke-width="2" stroke-dasharray="6 6"/>
+          <path d="M70 250 l6 6 l12 -12" stroke="#2563EB" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </g>
+        <circle cx="40" cy="150" r="4" fill="#60A5FA" class="float-slow"/>
+      </svg>
+
       <div class="container">
         <h2 class="section-title reveal">Mes automatisations</h2>
         <div class="cards">
@@ -151,6 +184,11 @@
         </div>
       </div>
     </section>
+
+    <div class="connector" aria-hidden="true">
+      <span class="connector__line"></span>
+      <span class="connector__node"></span>
+    </div>
 
     <!-- ===== INTÉGRATIONS — marquee défilant des connexions n8n ===== -->
     <section class="integrations" id="integrations">
@@ -229,6 +267,11 @@
       </div>
     </section>
 
+    <div class="connector" aria-hidden="true">
+      <span class="connector__line"></span>
+      <span class="connector__node"></span>
+    </div>
+
     <!-- ===== SECTION 4 — COMMENT ÇA MARCHE ===== -->
     <section class="process" id="process">
 
@@ -279,6 +322,11 @@
       </div>
     </section>
 
+    <div class="connector" aria-hidden="true">
+      <span class="connector__line"></span>
+      <span class="connector__node"></span>
+    </div>
+
     <!-- ===== SECTION 5 — À PROPOS ===== -->
     <section class="about" id="a-propos">
 
@@ -309,6 +357,11 @@
         </div>
       </div>
     </section>
+
+    <div class="connector connector--end" aria-hidden="true">
+      <span class="connector__line"></span>
+      <span class="connector__node connector__node--flag"></span>
+    </div>
 
     <!-- ===== SECTION 6 — CTA FINAL ===== -->
     <section class="cta" id="contact">
