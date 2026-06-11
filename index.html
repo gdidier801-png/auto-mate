@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gaspard Didier — Automatisation n8n pour consultants et coachs indépendants</title>
+  <meta name="description" content="J'automatise les tâches répétitives des consultants et coachs indépendants — avec n8n, sans code, livré en quelques jours.">
+
+  <!-- Favicon : initiales GD sur fond bleu (SVG inline, remplacer par le vrai logo plus tard) -->
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+  <!-- Google Fonts : Space Grotesk (titres) + Inter (texte) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ===== NAV ===== -->
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="#hero" class="nav__brand">Gaspard Didier</a>
+      <a href="https://cal.com/gaspard-didier-aiuucr/appel-de-decouverte" class="btn btn--primary btn--small" target="_blank" rel="noopener">Réserver un appel</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== SECTION 1 — HERO ===== -->
+    <section class="hero" id="hero">
+      <div class="container hero__inner reveal">
+        <h1 class="hero__title">J'automatise les tâches répétitives des consultants et coachs indépendants — <span class="accent">avec n8n, sans code</span>, livré en quelques jours.</h1>
+        <p class="hero__subtitle">Relances de factures, confirmations de rendez-vous, onboarding client : votre activité tourne pendant que vous travaillez sur ce qui compte.</p>
+        <div class="hero__actions">
+          <a href="https://cal.com/gaspard-didier-aiuucr/appel-de-decouverte" class="btn btn--primary" target="_blank" rel="noopener">Réserver un appel découverte gratuit (20 min)</a>
+          <a href="#automatisations" class="btn btn--outline">Voir mes automatisations</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 2 — LE PROBLÈME ===== -->
+    <section class="problem" id="probleme">
+      <div class="container">
+        <p class="problem__text reveal">Vous envoyez une facture et le client ne répond plus — il faut relancer, encore et encore, sans avoir l'air désespéré. Vous confirmez vos rendez-vous à la main, vous onboardez chaque nouveau client en répétant les mêmes cinq étapes. <strong>Ce sont des heures perdues chaque semaine</strong> sur des tâches que votre activité pourrait faire toute seule.</p>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 3 — MES AUTOMATISATIONS ===== -->
+    <section class="automations" id="automatisations">
+      <div class="container">
+        <h2 class="section-title reveal">Mes automatisations</h2>
+        <div class="cards">
+
+          <article class="card reveal">
+            <!-- PLACEHOLDER VIDÉO : remplacer facture-relance.mp4 par ta vraie vidéo (export CapCut compressé, < 50 Mo) -->
+            <video class="card__video" controls preload="metadata" playsinline>
+              <source src="assets/videos/facture-relance.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la vidéo.
+            </video>
+            <div class="card__body">
+              <h3 class="card__title">Relance automatique de factures</h3>
+              <p class="card__desc">Dès qu'une facture dépasse sa date d'échéance, le système envoie une relance à J+7, un suivi plus ferme à J+14, et une escalade à J+21 — sans que vous ayez à y penser.</p>
+              <div class="card__badges">
+                <span class="badge">Stripe / Pennylane / Sheets</span>
+                <span class="badge">Gmail</span>
+                <span class="badge">n8n</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <!-- PLACEHOLDER VIDÉO : remplacer rdv-confirmation.mp4 par ta vraie vidéo -->
+            <video class="card__video" controls preload="metadata" playsinline>
+              <source src="assets/videos/rdv-confirmation.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la vidéo.
+            </video>
+            <div class="card__body">
+              <h3 class="card__title">Confirmation automatique de rendez-vous découverte</h3>
+              <p class="card__desc">Dès qu'un prospect réserve un appel via Calendly, il reçoit instantanément un email de confirmation avec le lien de visio et une question de préparation, puis un rappel automatique 24h avant.</p>
+              <div class="card__badges">
+                <span class="badge">Calendly</span>
+                <span class="badge">Gmail</span>
+                <span class="badge">n8n</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <!-- PLACEHOLDER VIDÉO : remplacer onboarding.mp4 par ta vraie vidéo -->
+            <video class="card__video" controls preload="metadata" playsinline>
+              <source src="assets/videos/onboarding.mp4" type="video/mp4">
+              Votre navigateur ne supporte pas la vidéo.
+            </video>
+            <div class="card__body">
+              <h3 class="card__title">Onboarding automatique de nouveaux clients</h3>
+              <p class="card__desc">Dès qu'un contrat est signé, un email de bienvenue part automatiquement, un dossier Google Drive est créé, et le client est ajouté au CRM avec un lien de réservation pour sa première séance.</p>
+              <div class="card__badges">
+                <span class="badge">Docusign</span>
+                <span class="badge">Gmail</span>
+                <span class="badge">Drive</span>
+                <span class="badge">Notion / Airtable</span>
+                <span class="badge">n8n</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 4 — COMMENT ÇA MARCHE ===== -->
+    <section class="process" id="process">
+      <div class="container">
+        <h2 class="section-title reveal">Comment ça marche</h2>
+        <div class="steps">
+          <div class="step reveal">
+            <span class="step__number">1</span>
+            <h3 class="step__title">Appel découverte gratuit (20 min)</h3>
+            <p class="step__desc">On regarde ensemble vos outils actuels et ce qui vous fait perdre du temps.</p>
+          </div>
+          <div class="step reveal">
+            <span class="step__number">2</span>
+            <h3 class="step__title">Je construis votre automatisation (3 à 7 jours)</h3>
+            <p class="step__desc">Je développe le workflow sur n8n et je le teste avec de vraies données avant de vous le livrer.</p>
+          </div>
+          <div class="step reveal">
+            <span class="step__number">3</span>
+            <h3 class="step__title">Vous testez, je livre, et je vous explique tout</h3>
+            <p class="step__desc">Appel de passation : je vous montre où ça tourne, et ce qu'il faut surveiller.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 5 — À PROPOS ===== -->
+    <section class="about" id="a-propos">
+      <div class="container about__inner">
+        <!-- PLACEHOLDER PHOTO : remplacer photo.jpg par ta vraie photo (carrée de préférence) -->
+        <img class="about__photo reveal" src="assets/images/photo.jpg" alt="Photo de Gaspard Didier" width="400" height="400">
+        <div class="about__content reveal">
+          <h2 class="section-title section-title--left">À propos de moi</h2>
+          <p class="about__text">Je m'appelle Gaspard, étudiant en 1ère année à l'ESSEC. Je me suis formé pendant plusieurs semaines à n8n — triggers, workflows, connexions API, débogage — pour aider les indépendants et les coachs à automatiser les tâches qui leur prennent le plus de temps. Pas de jargon technique, pas de promesses en l'air : je construis des systèmes simples qui tournent.</p>
+          <div class="about__principles">
+            <span class="badge badge--principle">Réponse rapide</span>
+            <span class="badge badge--principle">Pas de jargon</span>
+            <span class="badge badge--principle">Systèmes simples qui durent</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SECTION 6 — CTA FINAL ===== -->
+    <section class="cta" id="contact">
+      <div class="container cta__inner reveal">
+        <h2 class="cta__title">Prêt à automatiser ?</h2>
+        <p class="cta__text">Réservez un appel découverte gratuit de 20 minutes — sans engagement.</p>
+        <a href="https://cal.com/gaspard-didier-aiuucr/appel-de-decouverte" class="btn btn--primary btn--large" target="_blank" rel="noopener">Réserver un appel</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__brand">Gaspard Didier</span>
+      <div class="footer__links">
+        <a href="mailto:gdidier801@gmail.com">gdidier801@gmail.com</a>
+        <a href="https://cal.com/gaspard-didier-aiuucr/appel-de-decouverte" target="_blank" rel="noopener">Réserver un appel</a>
+        <!-- PLACEHOLDER LINKEDIN : remplacer # par l'URL de ton profil LinkedIn -->
+        <a href="#" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ANALYTICS — GoatCounter (gratuit, respecte la vie privée).
+       1. Crée un compte sur https://www.goatcounter.com (2 min)
+       2. Remplace MONCOMPTE ci-dessous par le code de ton compte
+       3. C'est tout. Stats visibles sur https://MONCOMPTE.goatcounter.com -->
+  <script data-goatcounter="https://MONCOMPTE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
