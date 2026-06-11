@@ -614,6 +614,7 @@ img, video { max-width: 100%; display: block; }
   max-width: 400px;
   aspect-ratio: 1 / 1;
   object-fit: cover;
+  object-position: center 22%; /* garde le visage bien cadré (photo portrait) */
   border-radius: var(--radius);
   background: linear-gradient(135deg, var(--blue-50), var(--blue-100));
   border: 1px solid var(--blue-200);
