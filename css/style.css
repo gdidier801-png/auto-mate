@@ -430,12 +430,48 @@ img, video { max-width: 100%; display: block; }
 .card:hover {
   box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
 }
+/* Conteneur vidéo + bouton agrandir */
+.card__media {
+  position: relative;
+}
 .card__video {
   width: 100%;
   aspect-ratio: 16 / 9;
   /* Dégradé bleuté en attendant les vraies vidéos */
   background: linear-gradient(135deg, var(--blue-50), var(--blue-100));
   object-fit: cover;
+  display: block;
+}
+.card__expand {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 12px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(4px);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease;
+}
+.card:hover .card__expand,
+.card__expand:focus-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.card__expand:hover { background: var(--accent); }
+/* Sur tactile (pas de hover), toujours visible */
+@media (hover: none) {
+  .card__expand { opacity: 1; transform: none; }
 }
 .card:hover {
   border-color: var(--blue-200);
@@ -704,6 +740,61 @@ img, video { max-width: 100%; display: block; }
   color: #CBD5E1;
   font-size: 17px;
   margin-bottom: 32px;
+}
+
+/* ===== Lightbox vidéo ===== */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.88);
+  backdrop-filter: blur(6px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+.lightbox.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+.lightbox__inner {
+  width: 100%;
+  max-width: 1280px;
+  transform: scale(0.96);
+  transition: transform 0.25s ease;
+}
+.lightbox.is-open .lightbox__inner { transform: scale(1); }
+.lightbox__video {
+  width: 100%;
+  max-height: 86vh;
+  border-radius: 12px;
+  background: #000;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.5);
+  display: block;
+}
+.lightbox__close {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  width: 46px;
+  height: 46px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.lightbox__close:hover {
+  background: var(--accent);
+  transform: rotate(90deg);
 }
 
 /* ===== Footer ===== */

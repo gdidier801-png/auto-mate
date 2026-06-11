@@ -127,11 +127,16 @@
         <div class="cards">
 
           <article class="card reveal">
-            <!-- PLACEHOLDER VIDÉO : remplacer facture-relance.mp4 par ta vraie vidéo (export CapCut compressé, < 50 Mo) -->
-            <video class="card__video" controls preload="metadata" playsinline>
-              <source src="assets/videos/facture-relance.mp4" type="video/mp4">
-              Votre navigateur ne supporte pas la vidéo.
-            </video>
+            <div class="card__media">
+              <video class="card__video" controls preload="metadata" playsinline>
+                <source src="assets/videos/facture-relance.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+              </video>
+              <button class="card__expand" type="button" data-video="assets/videos/facture-relance.mp4" aria-label="Agrandir la vidéo en plein écran">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 1-2 2h-3"/></svg>
+                <span>Agrandir</span>
+              </button>
+            </div>
             <div class="card__body">
               <h3 class="card__title">Relance automatique de factures</h3>
               <p class="card__desc">Dès qu'une facture dépasse sa date d'échéance, le système envoie une relance à J+7, un suivi plus ferme à J+14, et une escalade à J+21 — sans que vous ayez à y penser.</p>
@@ -144,11 +149,16 @@
           </article>
 
           <article class="card reveal">
-            <!-- PLACEHOLDER VIDÉO : remplacer rdv-confirmation.mp4 par ta vraie vidéo -->
-            <video class="card__video" controls preload="metadata" playsinline>
-              <source src="assets/videos/rdv-confirmation.mp4" type="video/mp4">
-              Votre navigateur ne supporte pas la vidéo.
-            </video>
+            <div class="card__media">
+              <video class="card__video" controls preload="metadata" playsinline>
+                <source src="assets/videos/rdv-confirmation.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+              </video>
+              <button class="card__expand" type="button" data-video="assets/videos/rdv-confirmation.mp4" aria-label="Agrandir la vidéo en plein écran">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 1-2 2h-3"/></svg>
+                <span>Agrandir</span>
+              </button>
+            </div>
             <div class="card__body">
               <h3 class="card__title">Confirmation automatique de rendez-vous découverte</h3>
               <p class="card__desc">Dès qu'un prospect réserve un appel via Calendly, il reçoit instantanément un email de confirmation avec le lien de visio et une question de préparation, puis un rappel automatique 24h avant.</p>
@@ -163,11 +173,17 @@
           </article>
 
           <article class="card reveal">
-            <!-- PLACEHOLDER VIDÉO : remplacer onboarding.mp4 par ta vraie vidéo -->
-            <video class="card__video" controls preload="metadata" playsinline>
-              <source src="assets/videos/onboarding.mp4" type="video/mp4">
-              Votre navigateur ne supporte pas la vidéo.
-            </video>
+            <div class="card__media">
+              <!-- PLACEHOLDER VIDÉO : remplacer onboarding.mp4 par ta vraie vidéo -->
+              <video class="card__video" controls preload="metadata" playsinline>
+                <source src="assets/videos/onboarding.mp4" type="video/mp4">
+                Votre navigateur ne supporte pas la vidéo.
+              </video>
+              <button class="card__expand" type="button" data-video="assets/videos/onboarding.mp4" aria-label="Agrandir la vidéo en plein écran">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3M3 16v3a2 2 0 0 0 2 2h3m13-5v3a2 2 0 0 1-2 2h-3"/></svg>
+                <span>Agrandir</span>
+              </button>
+            </div>
             <div class="card__body">
               <h3 class="card__title">Onboarding automatique de nouveaux clients</h3>
               <p class="card__desc">Dès qu'un contrat est signé, un email de bienvenue part automatiquement, un dossier Google Drive est créé, et le client est ajouté au CRM avec un lien de réservation pour sa première séance.</p>
@@ -396,6 +412,16 @@
       </div>
     </div>
   </footer>
+
+  <!-- ===== LIGHTBOX VIDÉO (agrandissement plein écran) ===== -->
+  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Vidéo agrandie">
+    <button class="lightbox__close" type="button" aria-label="Fermer">
+      <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <div class="lightbox__inner">
+      <video class="lightbox__video" controls playsinline></video>
+    </div>
+  </div>
 
   <!-- ANALYTICS — GoatCounter (gratuit, respecte la vie privée).
        1. Crée un compte sur https://www.goatcounter.com (2 min)

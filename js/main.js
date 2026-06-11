@@ -50,6 +50,58 @@
 // flèche bleue, pas de JS, pas de latence.
 
 // ============================================
+// Lightbox vidéo : agrandir une démo en plein écran pour la lire en grand
+// ============================================
+
+(function () {
+  var lightbox = document.getElementById('lightbox');
+  if (!lightbox) return;
+
+  var lbVideo = lightbox.querySelector('.lightbox__video');
+  var closeBtn = lightbox.querySelector('.lightbox__close');
+  var lastFocused = null;
+
+  function open(src) {
+    lastFocused = document.activeElement;
+    // Mettre en pause les vidéos des cartes
+    document.querySelectorAll('.card__video').forEach(function (v) { v.pause(); });
+    lbVideo.src = src;
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function close() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    lbVideo.pause();
+    lbVideo.removeAttribute('src');
+    lbVideo.load();
+    document.body.style.overflow = '';
+    if (lastFocused) lastFocused.focus();
+  }
+
+  document.querySelectorAll('.card__expand').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      open(btn.getAttribute('data-video'));
+    });
+  });
+
+  closeBtn.addEventListener('click', close);
+
+  // Clic sur le fond (hors vidéo) ferme
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox || e.target === lightbox.querySelector('.lightbox__inner')) close();
+  });
+
+  // Touche Échap ferme
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lightbox.classList.contains('is-open')) close();
+  });
+})();
+
+// ============================================
 // Effet tilt 3D léger sur les cartes (desktop, souris uniquement)
 // ============================================
 
