@@ -50,6 +50,40 @@
 // flèche bleue, pas de JS, pas de latence.
 
 // ============================================
+// FAQ accordéon : réponses masquées, clic sur la question pour ouvrir
+// ============================================
+
+(function () {
+  document.querySelectorAll('.faq__item').forEach(function (item) {
+    var btn = item.querySelector('.faq__q');
+    var answer = item.querySelector('.faq__a');
+
+    btn.addEventListener('click', function () {
+      var isOpen = item.classList.contains('is-open');
+
+      if (isOpen) {
+        // Fermer : repartir de la hauteur actuelle pour que la transition joue
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        requestAnimationFrame(function () {
+          answer.style.maxHeight = '0px';
+        });
+        item.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        // Une fois ouverte, libérer la hauteur (contenu fluide au resize)
+        answer.addEventListener('transitionend', function unlock(e) {
+          if (item.classList.contains('is-open')) answer.style.maxHeight = 'none';
+          answer.removeEventListener('transitionend', unlock);
+        });
+      }
+    });
+  });
+})();
+
+// ============================================
 // Lightbox vidéo : agrandir une démo en plein écran pour la lire en grand
 // ============================================
 

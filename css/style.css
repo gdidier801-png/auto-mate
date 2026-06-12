@@ -286,6 +286,27 @@ img, video { max-width: 100%; display: block; }
   gap: 14px;
 }
 
+/* Mention prix sous les boutons du hero */
+.hero__price {
+  margin-top: 18px;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.hero__price::before {
+  content: "✓ ";
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Sous-titre générique de section (même style que integrations__sub) */
+.section-sub {
+  text-align: center;
+  color: var(--text-muted);
+  margin: -32px 0 48px;
+  font-size: 16px;
+}
+.section-sub strong { color: var(--accent); }
+
 /* ===== Section 2 — Problème ===== */
 .problem {
   position: relative;
@@ -619,6 +640,162 @@ img, video { max-width: 100%; display: block; }
 }
 .step__desc { color: var(--text-muted); font-size: 15px; }
 
+/* ===== Automatisation sur mesure ===== */
+.custom {
+  position: relative;
+  padding: 100px 0;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--bg), var(--blue-50) 60%, var(--bg));
+}
+.custom__panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  align-items: center;
+  background: var(--bg);
+  border: 1px solid var(--blue-200);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  box-shadow: 0 18px 48px rgba(37, 99, 235, 0.1);
+}
+.custom__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 18px;
+}
+.custom__list {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+.custom__list li {
+  position: relative;
+  padding-left: 32px;
+  color: var(--text);
+  font-size: 16px;
+  line-height: 1.5;
+}
+.custom__list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--blue-400));
+  /* coche blanche */
+  -webkit-mask: none;
+}
+.custom__list li::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 7px;
+  width: 8px;
+  height: 5px;
+  border-left: 2.5px solid #fff;
+  border-bottom: 2.5px solid #fff;
+  transform: rotate(-45deg);
+}
+.custom__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+}
+.custom__price {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 20px;
+  color: var(--accent);
+  background: rgba(37, 99, 235, 0.08);
+  border: 1px solid var(--blue-200);
+  border-radius: 999px;
+  padding: 10px 22px;
+}
+.custom__illu {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+  display: block;
+}
+
+/* ===== FAQ — accordéon ===== */
+.faq {
+  position: relative;
+  padding: 100px 0;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 55% 45% at 50% 0%, rgba(37, 99, 235, 0.05), transparent 70%),
+    radial-gradient(circle, var(--border) 1px, transparent 1px);
+  background-size: auto, 28px 28px;
+}
+.faq__container { max-width: 800px; }
+.faq__list {
+  display: grid;
+  gap: 14px;
+}
+.faq__item {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.faq__item:hover {
+  border-color: var(--blue-200);
+  box-shadow: 0 8px 24px rgba(37, 99, 235, 0.08);
+}
+.faq__item.is-open {
+  border-color: var(--blue-300);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.12);
+}
+.faq__q {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+.faq__q:hover { color: var(--accent); }
+.faq__item.is-open .faq__q { color: var(--accent); }
+.faq__chevron {
+  flex-shrink: 0;
+  color: var(--text-muted);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.faq__item.is-open .faq__chevron {
+  transform: rotate(180deg);
+  color: var(--accent);
+}
+/* Réponse masquée par défaut, dépliée en douceur au clic (max-height géré en JS) */
+.faq__a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.35s ease;
+}
+.faq__a-inner {
+  padding: 0 22px 22px;
+  color: var(--text-muted);
+  font-size: 15.5px;
+  line-height: 1.65;
+  border-top: 1px solid var(--blue-50);
+  padding-top: 16px;
+}
+
 /* ===== Section 5 — À propos ===== */
 .about {
   position: relative;
@@ -897,6 +1074,10 @@ body {
 
   .about__inner { grid-template-columns: 400px 1fr; gap: 64px; }
   .about__text { font-size: 18px; }
+
+  .custom__panel { grid-template-columns: 1fr 320px; padding: 48px; }
+  .custom__title { font-size: 26px; }
+  .faq__q { font-size: 18px; }
 
   .cta__title { font-size: 44px; }
 
