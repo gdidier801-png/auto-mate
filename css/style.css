@@ -166,6 +166,40 @@ img, video { max-width: 100%; display: block; }
 }
 .nav__brand:hover .nav__logo { transform: rotate(-8deg) scale(1.08); }
 
+/* Liens de sections dans la nav (masqués sur petit écran) */
+.nav__links {
+  display: none;
+  align-items: center;
+  gap: 24px;
+}
+.nav__links a {
+  position: relative;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+.nav__links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--blue-400));
+  transition: width 0.25s ease;
+}
+.nav__links a:hover { color: var(--text); }
+.nav__links a:hover::after { width: 100%; }
+
+/* Affichage à partir d'un écran assez large pour les 5 liens */
+@media (min-width: 1080px) {
+  .nav__links { display: flex; }
+}
+
 /* ===== Hero ===== */
 .hero {
   position: relative;
