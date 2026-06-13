@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mes automatisations en détail — auto-mate</title>
+  <meta name="description" content="Découvrez en détail chaque automatisation : relances de paiement, rendez-vous découverte, onboarding client et automatisations sur mesure.">
+
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- ===== NAV avec onglets des automatisations ===== -->
+  <header class="nav nav--detail">
+    <div class="container nav__inner">
+      <a href="index.html" class="nav__brand">
+        <img src="assets/images/logo.svg" alt="" class="nav__logo" width="34" height="34">
+        <span>auto<span class="accent">-</span>mate</span>
+      </a>
+      <a href="index.html#contact" class="btn btn--primary btn--small">Réserver un appel</a>
+    </div>
+    <nav class="subnav" aria-label="Choisir une automatisation">
+      <div class="container subnav__inner">
+        <a class="subnav__tab" href="#relances" data-id="relances">Relances de paiement</a>
+        <a class="subnav__tab" href="#rendez-vous" data-id="rendez-vous">Rendez-vous découverte</a>
+        <a class="subnav__tab" href="#onboarding" data-id="onboarding">Onboarding client</a>
+        <a class="subnav__tab" href="#personnalisee" data-id="personnalisee">Sur mesure</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="detail">
+    <!-- Décors latéraux (communs à toutes les automatisations) -->
+    <svg class="side-decor side-decor--left" viewBox="0 0 160 360" fill="none" aria-hidden="true">
+      <path d="M70 60 C 20 120, 120 180, 60 240" stroke="#2563EB" stroke-opacity="0.16" stroke-width="2" stroke-dasharray="6 6" class="flow-line"/>
+      <g class="float-slow"><rect x="36" y="40" width="48" height="48" rx="12" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="2"/><circle cx="60" cy="64" r="9" fill="#2563EB" fill-opacity="0.8"/></g>
+      <g class="float-mid"><rect x="46" y="220" width="48" height="48" rx="24" fill="#DBEAFE"/><path d="M62 244 l8 8 l16 -18" stroke="#2563EB" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+      <circle cx="118" cy="150" r="5" fill="#93C5FD" class="float-mid"/>
+    </svg>
+    <svg class="side-decor side-decor--right" viewBox="0 0 160 360" fill="none" aria-hidden="true">
+      <g class="float-mid"><rect x="50" y="46" width="56" height="56" rx="14" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="2"/><path d="M64 74 h28 M78 60 v28" stroke="#2563EB" stroke-width="2.6" stroke-linecap="round"/></g>
+      <g class="float-slow"><circle cx="78" cy="240" r="30" stroke="#2563EB" stroke-opacity="0.2" stroke-width="2" stroke-dasharray="8 6"/><circle cx="78" cy="240" r="11" fill="#60A5FA" fill-opacity="0.45"/></g>
+      <circle cx="40" cy="160" r="4" fill="#60A5FA" class="float-slow"/>
+    </svg>
+
+    <div class="container">
+
+      <!-- ============ RELANCES DE PAIEMENT (Carte 1) ============ -->
+      <article class="case" data-pane="relances">
+        <p class="case__eyebrow">Automatisation n°1</p>
+        <h1 class="case__title">Relances automatiques de paiement</h1>
+        <p class="case__lead">Comment une activité de conseil freelance peut arrêter de courir après les paiements en retard grâce à une automatisation.</p>
+
+        <div class="case__media">
+          <video class="case__video" controls preload="none" playsinline>
+            <source src="assets/videos/facture-relance.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo.
+          </video>
+        </div>
+
+        <div class="case__badges">
+          <span class="badge">n8n</span><span class="badge">Google Sheets</span><span class="badge">Gmail</span><span class="badge">Slack</span>
+        </div>
+
+        <div class="case__body">
+          <h2>La situation</h2>
+          <p>Un consultant freelance envoie entre 15 et 25 factures par mois, chacune avec sa propre date d'échéance, certaines récurrentes, d'autres ponctuelles. Suivre qui a payé veut dire vérifier manuellement le compte bancaire, puis recouper ça avec une feuille de calcul listant clients et échéances. Quand quelqu'un est en retard, le consultant écrit une relance à la main, une par une.</p>
+          <p>Ça se fait par lots, dès qu'il y a un moment pour s'y poser. Rarement le jour de l'échéance elle-même.</p>
+
+          <h2>Le problème</h2>
+          <p>D'abord, les relances sont réactives. Elles ne partent que quand le consultant pense à vérifier, souvent plusieurs jours après l'échéance.</p>
+          <p>Ensuite, il n'y a aucune alerte préventive. Les clients ne reçoivent jamais de rappel avant l'échéance, donc le premier message qu'ils reçoivent est déjà un « vous êtes en retard », ce qui passe beaucoup moins bien qu'une relance amicale en amont.</p>
+          <p>Enfin, il n'y a pas d'escalade. Un client en retard de 3 jours reçoit le même email qu'un client en retard de 25 jours, parce que rien ne suit le niveau de retard de chaque facture. Les petites entreprises constatent en moyenne des retards de paiement de 15 à 30 jours, donc sans système, les factures glissent dans cette zone avant que quiconque ne s'en aperçoive.</p>
+          <p class="case__scenario">Le scénario concret : une facture de 2 000 € était due mardi dernier. Le consultant ne le remarque que le lundi suivant, six jours plus tard, envoie une relance, et attend encore deux semaines que l'argent arrive. Ça fait près de trois semaines où cet argent dort sur le compte de quelqu'un d'autre plutôt que sur le sien.</p>
+
+          <h2>L'automatisation</h2>
+          <p>Le workflow tourne automatiquement tous les matins à 9h.</p>
+          <ol class="case__steps">
+            <li>Il lit une Google Sheet qui suit, pour chaque client, sa facture, son montant, son statut de paiement et sa date d'échéance.</li>
+            <li>Il calcule à combien de jours se trouve chaque échéance — avant, le jour même, ou après aujourd'hui.</li>
+            <li>Il dirige chaque facture vers l'un de plusieurs chemins selon ce nombre : paiement confirmé, 3 jours avant l'échéance, échéance aujourd'hui, 7 jours de retard, 14 jours de retard, ou 21 jours et plus.</li>
+            <li>Pour le chemin « paiement confirmé », il vérifie d'abord si un email de remerciement a déjà été envoyé pour que le client ne reçoive pas le même email deux fois, puis envoie la confirmation et poste une notification Slack.</li>
+            <li>Pour chaque chemin en retard ou à venir, il envoie la relance adaptée — douce pour « 3 jours avant », ferme pour « 21 jours de retard » — poste un message Slack confirmant l'envoi, et marque la feuille pour que cette même relance ne se répète jamais.</li>
+            <li>À 21 jours de retard et plus, au lieu d'un simple email de plus, il poste une alerte Slack demandant au consultant d'appeler ce client personnellement. Certaines choses ont besoin d'un humain, pas d'un email automatique de plus.</li>
+          </ol>
+
+          <div class="case__friction">
+            <strong>Tout n'a pas fonctionné parfaitement dès le début.</strong> Au départ, deux paliers de retard pouvaient se déclencher le même jour pour la même facture, ce qui envoyait deux relances différentes au client le même matin. Il a fallu revoir la logique de routage pour qu'une seule relance parte par facture et par jour, peu importe combien de conditions étaient vraies en même temps.
+          </div>
+
+          <h2>Le résultat</h2>
+          <p>Chaque client reçoit un rappel avant son échéance et exactement le bon ton de relance s'il est en retard, sans aucun suivi manuel. Les factures en retard sont repérées et relancées le matin même au lieu d'attendre jusqu'à une semaine.</p>
+          <p>Pour un consultant qui envoie 15 à 25 factures par mois, courir après les paiements en retard prenait avant 2 à 4 heures par mois. L'automatisation réduit ça à quelques minutes par mois.</p>
+          <p>Le vrai gain, c'est la trésorerie. Réduire le retard moyen de paiement de seulement 10 jours, pour une activité qui facture 50 000 € par an, débloque ponctuellement environ 1 400 € de trésorerie qui resteraient sinon bloqués chez les clients. C'est un déblocage ponctuel, pas un gain récurrent chaque mois.</p>
+          <p><em>Une limite honnête :</em> marquer une facture comme « payée » n'a pas pu être automatisé — il n'existe pas un moyen unique de se connecter à la banque de chaque client, donc cette colonne reste mise à jour à la main. Une fois marquée, tout ce qui suit tourne seul.</p>
+
+          <h2>La construction</h2>
+          <p><strong>Outils :</strong> n8n, Google Sheets, Gmail, Slack.<br>
+          <strong>Délai :</strong> environ une journée (celui qui a demandé le plus de débogage des trois).<br>
+          <strong>Maintenance :</strong> environ 30 minutes par mois, plus l'habitude quotidienne de dix secondes de marquer les factures payées.</p>
+        </div>
+      </article>
+
+      <!-- ============ RENDEZ-VOUS DÉCOUVERTE (Carte 2) ============ -->
+      <article class="case" data-pane="rendez-vous" hidden>
+        <p class="case__eyebrow">Automatisation n°2</p>
+        <h1 class="case__title">Confirmation des rendez-vous découverte</h1>
+        <p class="case__lead">Comment une activité de coaching en ligne peut arrêter de perdre des prospects grâce à une automatisation.</p>
+
+        <div class="case__media">
+          <video class="case__video" controls preload="none" playsinline>
+            <source src="assets/videos/rdv-confirmation.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo.
+          </video>
+        </div>
+
+        <div class="case__badges">
+          <span class="badge">n8n</span><span class="badge">Google Forms</span><span class="badge">Google Sheets</span><span class="badge">Gmail</span><span class="badge">Slack</span>
+        </div>
+
+        <div class="case__body">
+          <h2>La situation</h2>
+          <p>Un coach a un formulaire de contact sur son site (un Google Form relié à une Google Sheet) pour que les gens puissent demander un appel découverte gratuit. Chaque nouvelle soumission devient une nouvelle ligne dans la feuille. Le coach consulte la feuille quand il y pense, une à deux fois par jour si l'activité est calme, moins souvent s'il est pris avec des clients.</p>
+          <p>Quand il regarde, il lit le message, ouvre son agenda, écrit une réponse personnalisée avec ses disponibilités, et l'envoie. Si le formulaire arrive sans email, il n'y a rien à quoi répondre, donc ce prospect reste dans la feuille pour toujours.</p>
+
+          <h2>Le problème</h2>
+          <p>D'abord, le temps de réponse dépend entièrement du moment où le coach ouvre la feuille. Ça peut être dix minutes, ça peut être deux jours.</p>
+          <p>Ensuite, chaque réponse est écrite à partir de zéro. Personnaliser chacune prend quelques minutes, et quand il y en a cinq d'un coup, la qualité baisse. Certaines reçoivent un rapide « merci, voici mon Calendly », d'autres ne reçoivent rien.</p>
+          <p>Enfin, les soumissions incomplètes sont invisibles. Un prospect sans adresse email ne déclenche rien. Personne ne le remarque. Il reste juste là.</p>
+          <p class="case__scenario">Voici ce que ça donne en pratique. Un prospect chaud remplit le formulaire vendredi à 16h, prêt à réserver et payer. Le coach est déconnecté pour le week-end. Lundi matin, ce prospect a déjà réservé un appel chez un concurrent qui a répondu en vingt minutes.</p>
+
+          <h2>L'automatisation</h2>
+          <p>Le workflow se déclenche dès qu'une nouvelle ligne apparaît dans la Google Sheet, donc dès qu'une personne soumet le formulaire.</p>
+          <ol class="case__steps">
+            <li>Il récupère les données de la nouvelle ligne : nom, email, et le reste demandé par le formulaire.</li>
+            <li>Il vérifie si le champ email est bien rempli.</li>
+            <li><strong>Si oui :</strong> il envoie immédiatement au prospect un email de bienvenue personnalisé, avec un lien pour réserver directement un appel dans l'agenda du coach selon ses disponibilités en temps réel. En même temps, il poste un message Slack pour signaler le nouveau prospect avec ses détails.</li>
+            <li><strong>Si non :</strong> il ne tente pas d'envoyer un email et poste une alerte Slack signalant que ce prospect n'a pas laissé de coordonnées, pour que le coach puisse relancer autrement.</li>
+          </ol>
+
+          <div class="case__friction">
+            <strong>Tout n'a pas fonctionné parfaitement dès le début.</strong> Dans la première version, l'alerte Slack se déclenchait pour tous les prospects, y compris ceux qui recevaient déjà leur email de bienvenue, ce qui créait une notification en double et rendait le canal bruyant pour rien. Il a fallu ajouter une condition pour que l'alerte « à relancer manuellement » ne parte que pour les prospects sans adresse email.
+          </div>
+
+          <h2>Le résultat</h2>
+          <p>Le temps de réponse passe de « quand j'ai le temps de regarder la feuille » — qui pouvait être des heures ou des jours — à moins d'une minute, jour et nuit, week-ends compris.</p>
+          <p>Aucun prospect avec un email valide n'attend plus de réponse. Et aucun prospect ne disparaît silencieusement à cause d'une erreur de formulaire, puisque ces cas sont désormais signalés au lieu d'être ignorés.</p>
+          <p>Temps gagné estimé : 2 à 3 heures par semaine, qui partaient avant dans la vérification de la feuille et la rédaction de réponses individuelles.</p>
+
+          <h2>La construction</h2>
+          <p><strong>Outils :</strong> n8n, Google Sheets, Gmail, Slack.<br>
+          <strong>Délai :</strong> une demi-journée environ.<br>
+          <strong>Maintenance :</strong> quasi nulle — peut-être 15 minutes par mois à jeter un œil aux alertes Slack pour les prospects sans email.</p>
+        </div>
+      </article>
+
+      <!-- ============ ONBOARDING CLIENT (Carte 3) ============ -->
+      <article class="case" data-pane="onboarding" hidden>
+        <p class="case__eyebrow">Automatisation n°3</p>
+        <h1 class="case__title">Onboarding automatique des nouveaux clients</h1>
+        <p class="case__lead">Comment une activité de conseil peut arrêter d'intégrer ses nouveaux clients à la main grâce à une automatisation.</p>
+
+        <div class="case__media">
+          <video class="case__video" controls preload="none" playsinline>
+            <source src="assets/videos/onboarding.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas la vidéo.
+          </video>
+        </div>
+
+        <div class="case__badges">
+          <span class="badge">n8n</span><span class="badge">Google Sheets / Forms</span><span class="badge">Gmail</span><span class="badge">Google Drive</span><span class="badge">Signature électronique</span>
+        </div>
+
+        <div class="case__body">
+          <h2>La situation</h2>
+          <p>Un consultant signe un nouveau client via un outil de signature électronique (DocuSign, HelloSign, PandaDoc, peu importe lequel). Une fois le contrat signé, le consultant a une petite checklist à suivre manuellement : ajouter les infos du client dans une feuille de suivi, créer un dossier dans Google Drive pour ses documents, envoyer un email de bienvenue, puis envoyer un second email avec un lien pour réserver l'appel de lancement.</p>
+          <p>Quatre étapes, quatre outils différents. Généralement fait le même jour. Parfois non.</p>
+
+          <h2>Le problème</h2>
+          <p>D'abord, c'est un processus en plusieurs étapes réparti sur des outils séparés. Des petites tâches, mais elles s'accumulent, et il est facile d'en oublier une. Oublier le dossier, et les documents du client se retrouvent éparpillés. Oublier l'email de réservation, et personne ne planifie l'appel de lancement.</p>
+          <p>Ensuite, il y a un délai entre la signature et le premier contact si le consultant ne s'en occupe pas le jour même. Et le moment juste après la signature, quand quelqu'un vient de payer, est exactement celui où il est le plus enthousiaste, et aussi le plus susceptible de douter s'il n'a aucune nouvelle.</p>
+          <p>Enfin, la qualité dépend de l'emploi du temps du consultant. Certains emails de bienvenue sont chaleureux et détaillés. D'autres font deux lignes écrites à la hâte. L'expérience du client ne devrait pas dépendre de l'humeur du consultant ce jour-là.</p>
+          <p class="case__scenario">Voici le scénario : un client signe vendredi soir après une longue semaine. Le consultant n'ouvre son ordinateur que lundi. Le nouveau client, qui vient de payer, n'a aucune nouvelle pendant tout le week-end.</p>
+
+          <h2>L'automatisation</h2>
+          <p>Le déclencheur s'active dès que les données du contrat signé arrivent, sous forme d'une nouvelle ligne via l'outil de signature électronique connecté à un Google Form ou une Sheet.</p>
+          <ol class="case__steps">
+            <li>Le workflow lit et extrait les infos du nouveau client depuis cette ligne.</li>
+            <li>Il envoie immédiatement un email de bienvenue personnalisé, avec le prénom du client.</li>
+            <li>Il crée un dossier Google Drive dédié, nommé d'après le client, prêt à recevoir tous ses documents.</li>
+            <li>Il récupère le lien vers ce nouveau dossier.</li>
+            <li>Il ajoute le client à la feuille de suivi (le CRM), avec le lien du dossier Drive et les autres infos clés.</li>
+            <li>Il envoie un second email avec un lien de réservation, pour que le client choisisse un créneau pour l'appel de lancement selon les disponibilités réelles du consultant.</li>
+            <li>Il envoie une confirmation finale que tout s'est bien déroulé, pour que le consultant sache que le processus s'est terminé sans erreur.</li>
+          </ol>
+          <p>Sept étapes, zéro clic pour le consultant.</p>
+
+          <div class="case__friction">
+            <strong>Tout n'a pas fonctionné parfaitement dès le début.</strong> Lors des premiers essais, le workflow tentait parfois d'envoyer l'email de réservation avant que le dossier Drive ne soit complètement créé, ce qui faisait échouer l'étape suivante. Il a fallu ajouter un temps d'attente entre la création du dossier et la récupération de son lien pour que tout s'enchaîne dans le bon ordre.
+          </div>
+
+          <h2>Le résultat</h2>
+          <p>L'onboarding passe d'une checklist manuelle de 20 à 30 minutes répartie sur quatre outils à un processus qui se termine automatiquement en quelques secondes après la signature du contrat, n'importe quel jour, n'importe quelle heure, week-ends compris.</p>
+          <p>Les nouveaux clients reçoivent leur email de bienvenue et leur lien de réservation instantanément au lieu d'attendre jusqu'à lundi. Et chaque client bénéficie exactement de la même qualité d'onboarding, quelle que soit la semaine du consultant.</p>
+
+          <h2>La construction</h2>
+          <p><strong>Outils :</strong> n8n, Google Sheets/Forms, Gmail, Google Drive, plus l'outil de signature électronique déjà utilisé.<br>
+          <strong>Délai :</strong> une journée environ — faire fonctionner ensemble la création du dossier Drive et la mise à jour du CRM a demandé le plus de réglages.<br>
+          <strong>Maintenance :</strong> environ 30 minutes par mois, principalement pour vérifier que la connexion signature-vers-feuille fonctionne toujours.</p>
+        </div>
+      </article>
+
+      <!-- ============ SUR MESURE (placeholder) ============ -->
+      <article class="case case--custom" data-pane="personnalisee" hidden>
+        <p class="case__eyebrow">Automatisation n°4</p>
+        <h1 class="case__title">Automatisation sur mesure</h1>
+        <p class="case__lead">Un besoin qui ne rentre dans aucune case ? Je construis l'automatisation exacte qu'il vous faut, autour de vos outils.</p>
+
+        <div class="case__custom-illu">
+          <svg viewBox="0 0 320 220" fill="none" aria-hidden="true">
+            <path d="M70 60 C 150 60, 150 130, 240 130" stroke="#2563EB" stroke-opacity="0.25" stroke-width="2.5" stroke-dasharray="7 7" class="flow-line"/>
+            <path d="M240 130 C 150 130, 150 175, 80 175" stroke="#2563EB" stroke-opacity="0.25" stroke-width="2.5" stroke-dasharray="7 7" class="flow-line"/>
+            <g class="float-slow"><rect x="32" y="34" width="64" height="64" rx="16" fill="#FFFFFF" stroke="#BFDBFE" stroke-width="2.5"/><circle cx="64" cy="66" r="13" fill="#2563EB" fill-opacity="0.85"/></g>
+            <g class="float-mid">
+              <rect x="208" y="98" width="68" height="68" rx="17" fill="#2563EB"/>
+              <line x1="242" y1="92" x2="242" y2="98" stroke="#2563EB" stroke-width="3" stroke-linecap="round"/><circle cx="242" cy="89" r="3.6" fill="#2563EB"/>
+              <circle cx="229" cy="126" r="5.5" fill="#FFFFFF"/><circle cx="255" cy="126" r="5.5" fill="#FFFFFF"/>
+              <path d="M229 141 Q242 150 255 141" stroke="#FFFFFF" stroke-width="3.2" stroke-linecap="round" fill="none"/>
+            </g>
+            <g class="float-slow"><rect x="46" y="150" width="64" height="64" rx="32" fill="#DBEAFE"/><path d="M66 182 l10 10 l20 -22" stroke="#2563EB" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></g>
+            <circle cx="285" cy="54" r="6" fill="#93C5FD" class="float-mid"/>
+          </svg>
+        </div>
+
+        <div class="case__body case__body--center">
+          <h2>Pensée pour votre façon de travailler</h2>
+          <p>Les trois automatisations présentées ici sont des exemples concrets. Mais la plupart des projets sont uniques : vos outils, votre process, vos contraintes. C'est exactement ce que couvre l'offre sur mesure.</p>
+          <ul class="custom__list custom__list--center">
+            <li>Un appel découverte gratuit pour définir précisément le besoin</li>
+            <li>Devis fixe annoncé avant de commencer — pas de facturation à l'heure</li>
+            <li>Construction et tests avec vos vraies données, livraison en 3 à 7 jours</li>
+            <li>Passation complète à la livraison : l'automatisation vous appartient</li>
+          </ul>
+          <p class="case__custom-note">Une étude de cas détaillée pour cette offre arrivera bientôt. En attendant, le plus simple est d'en parler de vive voix.</p>
+          <div class="case__cta">
+            <span class="custom__price">À partir de 149&nbsp;€</span>
+            <a href="https://cal.com/gaspard-didier-aiuucr/appel-de-decouverte" class="btn btn--primary btn--shine" target="_blank" rel="noopener">Discuter de mon besoin</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- Retour + CTA bas de page -->
+      <div class="case__footer-cta">
+        <a href="index.html#automatisations" class="btn btn--outline">← Retour aux automatisations</a>
+        <a href="https://cal.com/gaspard-didier-aiuucr/appel-de-decouverte" class="btn btn--primary btn--shine" target="_blank" rel="noopener">Réserver un appel découverte gratuit</a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <span class="footer__brand"><img src="assets/images/logo.svg" alt="" class="footer__logo" width="26" height="26"> auto-mate — Gaspard Didier</span>
+      <div class="footer__links">
+        <a href="mailto:gdidier801@gmail.com">gdidier801@gmail.com</a>
+        <a href="https://cal.com/gaspard-didier-aiuucr/appel-de-decouverte" target="_blank" rel="noopener">Réserver un appel</a>
+        <a href="https://www.linkedin.com/in/gaspard-didier-490bb827a/" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </footer>
+
+  <script data-goatcounter="https://MONCOMPTE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  <script src="js/detail.js"></script>
+</body>
+</html>
